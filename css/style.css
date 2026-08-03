@@ -1,0 +1,273 @@
+/* Reset e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    flex: 1;
+}
+
+/* Navbar */
+.navbar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a47a3;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-menu a {
+    color: #4a47a3;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    background: #4a47a3;
+    color: white;
+}
+
+.btn-logout {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 1rem;
+}
+
+.btn-logout:hover {
+    background: #c82333;
+}
+
+/* Cards de Monitoramento */
+.monitoring-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.sensor-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.sensor-card:hover {
+    transform: translateY(-5px);
+}
+
+.sensor-card h3 {
+    color: #4a47a3;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.sensor-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin: 20px 0;
+}
+
+.sensor-value .value {
+    font-size: 4rem;
+    color: #4a47a3;
+}
+
+.sensor-value .unit {
+    font-size: 2rem;
+    color: #666;
+}
+
+/* Status de Conforto */
+.confort-status {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.status-frio {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-confortavel {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.status-quente {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Status de Presença */
+.status-presence {
+    font-size: 2rem !important;
+}
+
+.presence-ocupada {
+    color: #dc3545 !important;
+}
+
+.presence-livre {
+    color: #28a745 !important;
+}
+
+/* Seção Sobre */
+.about-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 40px 0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2 {
+    color: #4a47a3;
+    margin-bottom: 20px;
+}
+
+.about-content {
+    color: #555;
+    line-height: 1.6;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.tech-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.tech-item h4 {
+    color: #4a47a3;
+    margin-bottom: 10px;
+}
+
+.tech-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.tech-item ul li {
+    padding: 5px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.tech-item ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #4a47a3;
+}
+
+/* Footer */
+.footer {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px 0;
+    margin-top: 40px;
+    box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #666;
+}
+
+/* Update Info */
+.update-info {
+    text-align: center;
+    color: #fff;
+    font-size: 0.9rem;
+    margin: 10px 0;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .monitoring-area {
+        grid-template-columns: 1fr;
+    }
+    
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .sensor-value {
+        font-size: 2.5rem;
+    }
+    
+    .sensor-value .value {
+        font-size: 3rem;
+    }
+}

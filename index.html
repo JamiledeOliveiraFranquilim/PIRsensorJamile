@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento - Sala Inteligente</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span>🏢 Sala Inteligente</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><button id="logoutBtn" class="btn-logout">Sair</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="container">
+        <h1>📊 Monitoramento da Sala</h1>
+        
+        <!-- Área de Monitoramento -->
+        <section class="monitoring-area">
+            <!-- Temperatura -->
+            <div class="sensor-card temperature-card">
+                <h3>🌡️ Temperatura</h3>
+                <div class="sensor-value" id="temperatura">
+                    <span class="value">--</span>
+                    <span class="unit">°C</span>
+                </div>
+                <div class="confort-status" id="confortStatus">
+                    <span class="status-text">Aguardando dados...</span>
+                </div>
+            </div>
+
+            <!-- Presença -->
+            <div class="sensor-card presence-card">
+                <h3>👤 Presença</h3>
+                <div class="sensor-value" id="presenca">
+                    <span class="value status-presence">--</span>
+                </div>
+                <div class="presence-detail" id="presenceDetail">
+                    <span class="status-text">Aguardando dados...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Última Atualização -->
+        <div class="update-info">
+            <span id="updateTime">Última atualização: --</span>
+        </div>
+
+        <!-- Seção Sobre -->
+        <section class="about-section">
+            <h2>Sobre o Sistema</h2>
+            <div class="about-content">
+                <p>
+                    O <strong>Sistema de Sala Inteligente</strong> foi desenvolvido para monitoramento 
+                    ambiental em tempo real, integrando sensores IoT para garantir o conforto e 
+                    segurança dos ocupantes.
+                </p>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h4>🎯 Objetivo</h4>
+                        <p>Monitorar temperatura e presença para otimizar o uso da sala e garantir 
+                        o conforto dos ocupantes.</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>⚙️ Tecnologias</h4>
+                        <ul>
+                            <li>ESP32 com sensor DHT22 (temperatura)</li>
+                            <li>Sensor PIR (presença)</li>
+                            <li>Supabase (Auth + Database)</li>
+                            <li>HTML5, CSS3, JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>🏢 Sala Inteligente v1.0</p>
+            <p>Desenvolvido por [Seu Nome]</p>
+            <p>&copy; 2026</p>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
