@@ -15,6 +15,7 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">Home</a></li>
+                <li><span class="user-name" style="color: #4a47a3; margin-right: 15px;"></span></li>
                 <li><button id="logoutBtn" class="btn-logout">Sair</button></li>
             </ul>
         </div>
@@ -23,6 +24,9 @@
     <!-- Conteúdo Principal -->
     <main class="container">
         <h1>📊 Monitoramento da Sala</h1>
+        
+        <!-- Status MQTT -->
+        <div id="mqttStatus" class="mqtt-status" style="display: none;"></div>
         
         <!-- Área de Monitoramento -->
         <section class="monitoring-area">
@@ -77,6 +81,7 @@
                             <li>Sensor PIR (presença)</li>
                             <li>Supabase (Auth + Database)</li>
                             <li>HTML5, CSS3, JavaScript</li>
+                            <li>MQTT para comunicação</li>
                         </ul>
                     </div>
                 </div>
@@ -93,8 +98,9 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mqtt@5/dist/mqtt.min.js"></script>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
     <script src="js/config.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/home.js"></script>

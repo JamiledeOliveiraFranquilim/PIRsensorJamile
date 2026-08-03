@@ -3,9 +3,18 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 
 const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
+window.supabaseClient = supabaseClient;
+window.supabaseUrl = supabaseUrl;
+
 const CONFIG = {
     supabase: supabaseClient,
     updateInterval: 5000,
-    mqttBroker: 'wss://test.mosquitto.org:8081/mqtt',
-    mqttTopic: 'io/movimentojamile'
+    mqttBroker: 'wss://broker.emqx.io:8084/mqtt',
+    mqttTopic: 'io/movimentojamile',  // Tópico único (igual ao ESP32)
 };
+
+window.CONFIG = CONFIG;
+
+console.log('✅ Configurações carregadas:');
+console.log('📡 MQTT Broker:', CONFIG.mqttBroker);
+console.log('📡 MQTT Topic:', CONFIG.mqttTopic);
