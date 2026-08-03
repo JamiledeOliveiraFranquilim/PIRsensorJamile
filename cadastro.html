@@ -4,41 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Sala Inteligente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/cadastro.css">
 </head>
 <body>
     <div class="cadastro-container">
         <div class="cadastro-box">
-            <h1>🏢 Sala Inteligente</h1>
-            <h2>Criar Conta</h2>
-            
+            <div class="logo-icon"></div>
+            <h1>Monitoramento de temperatura e movimento</h1>
+            <h2>Crie sua conta</h2>
+
             <form id="cadastroForm">
                 <div class="form-group">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" placeholder="Seu nome completo" required>
+                    <label for="nome">
+                        <span class="label-icon"></span>
+                        Nome Completo
+                    </label>
+                    <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+                    <span class="input-focus"></span>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="seu@email.com" required>
+                    <label for="email">
+                        <span class="label-icon"></span>
+                        E-mail
+                    </label>
+                    <input type="email" id="email" placeholder="Digite seu e-mail" required>
+                    <span class="input-focus"></span>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="password">Senha</label>
+                    <label for="password">
+                        <span class="label-icon"></span>
+                        Senha
+                    </label>
                     <input type="password" id="password" placeholder="Mínimo 6 caracteres" required>
+                    <span class="input-focus"></span>
+                    <span class="input-hint">A senha deve ter pelo menos 6 caracteres</span>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="confirmPassword">Confirmar Senha</label>
+                    <label for="confirmPassword">
+                        <span class="label-icon"></span>
+                        Confirmar Senha
+                    </label>
                     <input type="password" id="confirmPassword" placeholder="Confirme sua senha" required>
+                    <span class="input-focus"></span>
                 </div>
-                
+
                 <div id="message" class="message"></div>
-                
-                <button type="submit" class="btn-primary">Cadastrar</button>
+
+                <button type="submit" class="btn-primary">
+                    <span>Cadastrar</span>
+                    <span class="btn-icon"></span>
+                </button>
             </form>
-            
+
             <p class="login-link">
                 Já tem uma conta? <a href="login.html">Faça login</a>
             </p>
@@ -46,6 +68,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/config.js"></script>
     <script src="js/auth.js"></script>
 </body>
 </html>

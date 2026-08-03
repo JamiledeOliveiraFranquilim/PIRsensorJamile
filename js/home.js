@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             window.location.href = 'login.html';
             return;
         }
-        console.log('Usuário autenticado:', session.user.email);
 
         const userNameEl = document.querySelector('.user-name');
         if (userNameEl && session.user.user_metadata?.full_name) {
@@ -32,6 +31,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     await fetchHistoricalData();
 
+    if (updateInterval) {
+        clearInterval(updateInterval);
+    }
     updateInterval = setInterval(fetchHistoricalData, CONFIG.updateInterval);
 
     console.log('Sistema inicializado com sucesso!');
@@ -52,7 +54,9 @@ function initializeMQTT() {
     try {
         console.log('Inicializando conexão MQTT...');
         console.log('Broker:', CONFIG.mqttBroker);
-        console.log('Topic:', CONFIG.mqttTopic);
+
+        const topics = CONFIG.mqttTopics || [CONFIG.mqttTopic, CONFIG.mqttTopic1].filter(Boolean);
+        console.log('Topics:', topics);
 
         if (typeof mqtt === 'undefined') {
             console.error('Biblioteca MQTT não carregada!');
@@ -61,8 +65,6 @@ function initializeMQTT() {
         }
 
         const clientId = 'sala-inteligente-' + Math.random().toString(16).slice(2, 10);
-        console.log('Client ID:', clientId);
-
         mqttClient = mqtt.connect(CONFIG.mqttBroker, {
             clientId: clientId,
             clean: true,
@@ -76,14 +78,14 @@ function initializeMQTT() {
             reconnectAttempts = 0;
             showMqttStatus('Conectado ao broker MQTT', 'success');
 
-            mqttClient.subscribe(CONFIG.mqttTopic, { qos: 0 }, (err) => {
-                if (!err) {
-                    console.log(`Inscrito no tópico: ${CONFIG.mqttTopic}`);
-                    showMqttStatus(`Conectado e inscrito em ${CONFIG.mqttTopic}`, 'success');
-                } else {
-                    console.error('Erro ao inscrever:', err);
-                    showMqttStatus('Erro ao inscrever no tópico', 'error');
-                }
+            topics.forEach((topic) => {
+                mqttClient.subscribe(topic, { qos: 0 }, (err) => {
+                    if (!err) {
+                        console.log(`Inscrito no tópico: ${topic}`);
+                    } else {
+                        console.error(`Erro ao inscrever no tópico ${topic}:`, err);
+                    }
+                });
             });
         });
 
@@ -111,10 +113,7 @@ function initializeMQTT() {
                 }
 
                 if (data && (data.temperatura !== undefined || data.presenca !== undefined)) {
-                    console.log('Dados processados:', data);
-
                     updateSensors(data);
-
                     saveDataToSupabase(data);
 
                     const updateTime = document.getElementById('updateTime');
@@ -122,8 +121,6 @@ function initializeMQTT() {
                         const now = new Date();
                         updateTime.textContent = `Última atualização: ${now.toLocaleString('pt-BR')}`;
                     }
-                } else {
-                    console.warn('Dados não reconhecidos:', payload);
                 }
             } catch (error) {
                 console.error('Erro ao processar mensagem:', error);
@@ -344,9 +341,3 @@ window.insertManualData = insertManualData;
 window.generateMockData = generateMockData;
 window.simulateMQTTData = simulateMQTTData;
 window.testMQTT = testMQTTConnection;
-
-console.log('Comandos disponíveis no console:');
-console.log('insertManualData(temp, presenca)');
-console.log('generateMockData()');
-console.log('simulateMQTTData()');
-console.log('testMQTT()');
